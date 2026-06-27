@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Thiemel</title>
+<meta name="description" content="Jack Thiemel — PhD Candidate in Economics, London School of Economics. Development and Environmental Economics.">
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --muted:#6b6b6b;
+    --faint:#8f8f8f;
+    --rule:#e4e2dd;
+    --bg:#fbfaf7;
+    --accent:#7a2e2e;
+    --max:720px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:64px 24px 96px;}
+
+  /* Header */
+  header{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;}
+  .photo{
+    width:120px;height:150px;flex:none;
+    object-fit:cover;border-radius:3px;background:#eceae5;
+    border:1px solid var(--rule);
+  }
+  .photo-placeholder{
+    width:120px;height:150px;flex:none;border-radius:3px;
+    background:#eceae5;border:1px dashed #c9c6bf;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--faint);font-family:-apple-system,system-ui,sans-serif;
+    font-size:12px;text-align:center;padding:8px;line-height:1.4;
+  }
+  .intro h1{font-size:30px;line-height:1.15;margin:0 0 6px;font-weight:normal;letter-spacing:-0.01em;}
+  .intro .role{color:var(--muted);font-size:17px;margin:0 0 2px;}
+  .intro .inst{color:var(--muted);font-size:17px;margin:0 0 14px;}
+  .meta{font-family:-apple-system,system-ui,sans-serif;font-size:14px;color:var(--muted);line-height:1.7;}
+  .meta a{color:var(--accent);}
+  .links{margin-top:10px;font-family:-apple-system,system-ui,sans-serif;font-size:14px;}
+  .links a{margin-right:16px;white-space:nowrap;}
+
+  /* Nav */
+  nav{
+    margin:44px 0 8px;padding:14px 0;border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    font-family:-apple-system,system-ui,sans-serif;font-size:13px;
+    letter-spacing:0.04em;text-transform:uppercase;
+    display:flex;gap:28px;flex-wrap:wrap;
+  }
+  nav a{color:var(--muted);display:inline-flex;gap:7px;align-items:baseline;}
+  nav a .n{color:var(--faint);font-variant-numeric:tabular-nums;font-size:11px;}
+  nav a:hover{color:var(--accent);text-decoration:none;}
+
+  /* Sections */
+  section{margin-top:52px;scroll-margin-top:20px;}
+  .sec-head{
+    display:flex;gap:12px;align-items:baseline;margin:0 0 22px;
+  }
+  .sec-head .n{
+    font-family:-apple-system,system-ui,sans-serif;font-size:13px;
+    color:var(--faint);font-variant-numeric:tabular-nums;
+  }
+  .sec-head h2{font-size:15px;margin:0;font-weight:normal;
+    font-family:-apple-system,system-ui,sans-serif;letter-spacing:0.06em;
+    text-transform:uppercase;color:var(--ink);}
+  section p{margin:0 0 16px;}
+
+  /* Paper entries */
+  .paper{margin:0 0 30px;padding:0;}
+  .paper:last-child{margin-bottom:0;}
+  .paper .title{font-size:19px;line-height:1.35;margin:0 0 3px;}
+  .paper .authors{color:var(--muted);font-size:16px;margin:0 0 3px;}
+  .paper .note{color:var(--faint);font-style:italic;font-size:15px;margin:0 0 8px;}
+  .paper .award{color:var(--accent);font-size:15px;margin:0 0 8px;}
+  .paper-actions{
+    font-family:-apple-system,system-ui,sans-serif;font-size:13.5px;
+    display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;
+  }
+  .toggle{
+    background:none;border:none;padding:0;cursor:pointer;
+    color:var(--accent);font:inherit;display:inline-flex;align-items:center;gap:5px;
+  }
+  .toggle:hover{text-decoration:underline;}
+  .toggle .caret{transition:transform .18s ease;font-size:11px;display:inline-block;}
+  .toggle[aria-expanded="true"] .caret{transform:rotate(90deg);}
+  .paper-actions a{color:var(--accent);}
+  .abstract{
+    overflow:hidden;max-height:0;transition:max-height .28s ease;
+    font-size:16px;color:#3a3a3a;
+  }
+  .abstract .inner{padding:14px 0 2px;border-left:2px solid var(--rule);padding-left:16px;margin-top:10px;}
+
+  /* Placeholder styling */
+  .ph{
+    background:#fff6e9;border:1px dashed #e0c89a;border-radius:4px;
+    padding:14px 16px;font-family:-apple-system,system-ui,sans-serif;
+    font-size:14px;color:#8a6d3b;line-height:1.5;
+  }
+  .ph strong{color:#6b5328;}
+
+  footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--rule);
+    font-family:-apple-system,system-ui,sans-serif;font-size:13px;color:var(--faint);}
+
+  @media (max-width:560px){
+    body{font-size:17px;}
+    .wrap{padding:40px 20px 72px;}
+    header{gap:20px;}
+    .intro h1{font-size:26px;}
+    nav{gap:18px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .abstract,.toggle .caret{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <!-- PHOTO: replace the placeholder div below with:
+         <img class="photo" src="profile.jpg" alt="Jack Thiemel">
+         after you upload profile.jpg to the repo -->
+    <div class="photo-placeholder">Upload<br>profile.jpg<br>here</div>
+
+    <div class="intro">
+      <h1>Jack Thiemel</h1>
+      <p class="role">PhD Candidate in Economics</p>
+      <p class="inst">London School of Economics</p>
+      <div class="meta">
+        Development &amp; Environmental Economics<br>
+        <a href="mailto:j.p.thiemel@lse.ac.uk">j.p.thiemel@lse.ac.uk</a>
+      </div>
+      <div class="links">
+        <a href="CV.pdf">CV</a>
+        <a href="https://www.lse.ac.uk/economics/people/research-students/jack-thiemel">LSE</a>
+        <a href="https://scholar.google.com/citations?user=ekK8U1YAAAAJ&hl=en">Google Scholar</a>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#about"><span class="n">01</span> About</a>
+    <a href="#work-in-progress"><span class="n">02</span> Work in Progress</a>
+    <a href="#pre-phd"><span class="n">03</span> Pre-PhD Publications</a>
+  </nav>
+
+  <section id="about">
+    <div class="sec-head"><span class="n">01</span><h2>About</h2></div>
+    <p>I am a PhD Candidate in Economics at the London School of Economics, working in development and environmental economics. My research examines the challenges non-governmental organisations face in programme delivery, the effect of climate change on the livelihoods of the global poor, and how credit constraints shape the demand for and effectiveness of workforce development programmes. My fieldwork is based primarily in Bangladesh and Uganda, and I am affiliated with STICERD and the Economics of Environment and Energy (EEE) programme.</p>
+    <p>Before starting the PhD, I worked at the US Library of Congress and in Bangladesh, where I contributed to research on poverty traps and the intergenerational transmission of poverty. I hold a BSc in Economics and Mathematics from Georgetown University, where I was awarded the Dahlgren Medal in Mathematics.</p>
+  </section>
+
+  <section id="work-in-progress">
+    <div class="sec-head"><span class="n">02</span><h2>Work in Progress</h2></div>
+
+    <div class="ph">
+      <strong>Placeholder — fill these in.</strong> Each entry below is a template. Edit the title,
+      co-authors, status note, and abstract text, then duplicate the block for additional papers.
+      Delete the abstract toggle if a paper has no public abstract yet.
+    </div>
+
+    <div class="paper" style="margin-top:28px;">
+      <p class="title">Working Paper Title Goes Here</p>
+      <p class="authors">with Co-author One and Co-author Two</p>
+      <p class="note">Job Market Paper</p>
+      <div class="paper-actions">
+        <button class="toggle" aria-expanded="false"><span class="caret">▸</span> Abstract</button>
+        <a href="#">Paper</a>
+        <a href="#">Slides</a>
+      </div>
+      <div class="abstract"><div class="inner">
+        Paste the abstract here. It stays hidden until a reader clicks "Abstract," keeping the page
+        clean while detail is one click away.
+      </div></div>
+    </div>
+
+    <div class="paper">
+      <p class="title">Second Working Paper Title</p>
+      <p class="authors">with Co-author Name</p>
+      <p class="note">Draft available upon request</p>
+      <div class="paper-actions">
+        <button class="toggle" aria-expanded="false"><span class="caret">▸</span> Abstract</button>
+      </div>
+      <div class="abstract"><div class="inner">
+        Paste the abstract here.
+      </div></div>
+    </div>
+  </section>
+
+  <section id="pre-phd">
+    <div class="sec-head"><span class="n">03</span><h2>Pre-PhD Publications</h2></div>
+
+    <div class="ph">
+      <strong>Placeholder — fill these in.</strong> List work published before the PhD here, same format.
+    </div>
+
+    <div class="paper" style="margin-top:28px;">
+      <p class="title">Pre-PhD Publication Title</p>
+      <p class="authors">with Co-author Names</p>
+      <p class="note">Journal Name, Year</p>
+      <div class="paper-actions">
+        <a href="#">Published version</a>
+        <a href="#">Working paper</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Jack Thiemel · London School of Economics · j.p.thiemel@lse.ac.uk
+  </footer>
+
+</div>
+
+<script>
+  // Expand/collapse abstracts
+  document.querySelectorAll('.toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var ab = btn.closest('.paper').querySelector('.abstract');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      ab.style.maxHeight = open ? '0' : (ab.firstElementChild.scrollHeight + 40) + 'px';
+    });
+  });
+</script>
+</body>
+</html>
